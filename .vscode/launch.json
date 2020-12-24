@@ -18,6 +18,38 @@
         "-a",
         "fn=depthFirstSearch"
       ]
+    },
+    {
+      "name": "Depth First Search - medium maze",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/pacman.py",
+      "console": "integratedTerminal",
+      "args": [
+        "-l",
+        "mediumMaze",
+        "-p",
+        "SearchAgent",
+        "-a",
+        "fn=depthFirstSearch"
+      ]
+    },
+    {
+      "name": "Depth First Search - big maze",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/pacman.py",
+      "console": "integratedTerminal",
+      "args": [
+        "-l",
+        "bigMaze",
+        "-p",
+        "SearchAgent",
+        "-z",
+        ".5",
+        "-a",
+        "fn=depthFirstSearch"
+      ]
     }
   ]
 }
