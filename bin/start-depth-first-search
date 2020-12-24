@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+## Helper binary for starting the pacman Search agent with Depth First Search algorithm
+## MAZE name can be passsed
+## If MAZE parameter is not passed then use default MAZE="tinyMaze"
+
+# Resolve absolute path of binary file
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+MAZE="tinyMaze"
+
+if [[ $# -eq 1 ]] ; then
+    MAZE=$1
+fi
+
+# Start our start binary
+${DIR}/start ${MAZE} depthFirstSearch

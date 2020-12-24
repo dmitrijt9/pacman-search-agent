@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+## Helper binary for starting the pacman Search agent
+## MAZE and ALGORITHM functions can be passsed
+## If these parameres are not passed then use default MAZE="tinyMaze" ALGORITHM="tinyMazeSearch"
+
+# Resolve absolute path of binary file
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+MAZE="tinyMaze"
+ALGORITHM="tinyMazeSearch"
+
+if [[ $# -eq 1 ]] ; then
+    MAZE=$1
+fi
+
+if [[ $# -eq 2 ]] ; then
+    MAZE=$1
+    ALGORITHM=$2
+fi
+
+python ${DIR}/../pacman.py -l ${MAZE} -p SearchAgent -a fn=${ALGORITHM}
