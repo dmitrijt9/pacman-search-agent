@@ -9,14 +9,17 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 MAZE="tinyMaze"
 ALGORITHM="tinyMazeSearch"
+OTHERS=""
 
-if [[ $# -eq 1 ]] ; then
+if [[ $# -ge 1 ]] ; then
     MAZE=$1
+    OTHERS=${@:2}
 fi
 
-if [[ $# -eq 2 ]] ; then
+if [[ $# -ge 2 ]] ; then
     MAZE=$1
     ALGORITHM=$2
+    OTHERS=${@:3}
 fi
 
-python ${DIR}/../pacman.py -l ${MAZE} -p SearchAgent -a fn=${ALGORITHM}
+python ${DIR}/../pacman.py -l ${MAZE} -p SearchAgent -a fn=${ALGORITHM} ${OTHERS}

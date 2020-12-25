@@ -14,4 +14,4 @@ if [[ $# -ge 1 ]] ; then
 fi
 
 # Start our start binary
-${DIR}/start ${MAZE} depthFirstSearch ${@:2}
+${DIR}/start ${MAZE} bfs ${@:2}

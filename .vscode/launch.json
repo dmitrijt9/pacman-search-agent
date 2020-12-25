@@ -54,6 +54,22 @@
       ]
     },
     {
+      "name": "Breadth First Search - small maze",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/pacman.py",
+      "console": "integratedTerminal",
+      "args": ["-l", "tinyMaze", "-p", "SearchAgent", "-a", "fn=bfs"]
+    },
+    {
+      "name": "Breadth First Search - medium maze",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/pacman.py",
+      "console": "integratedTerminal",
+      "args": ["-l", "mediumMaze", "-p", "SearchAgent", "-a", "fn=bfs"]
+    },
+    {
       "name": "Autograder",
       "type": "python",
       "request": "launch",

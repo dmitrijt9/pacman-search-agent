@@ -94,7 +94,7 @@ def depthFirstSearch(problem):
 def DFSrecursiveHelper(problem, state, path, visited):
 
     # return true if finds the goal state
-    if (problem.isGoalState(state)):
+    if problem.isGoalState(state):
         return True
     
     # add state to visited states, so it won't expand it again later
@@ -118,8 +118,42 @@ def DFSrecursiveHelper(problem, state, path, visited):
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+
+    # prepare queue for BSF and set of already visited states
+    queue, visited = util.Queue(), set()
+
+    # push start state with empty path - no actions were needed to get to this state
+    queue.push((problem.getStartState(), []))
+    while not queue.isEmpty():
+
+        # state - current state (x, y) - e.g. (5, 4)
+        # path - list of actions which lead to this state 
+        state, path = queue.pop()
+
+        # if current state is a goal then return his path from start state
+        if problem.isGoalState(state):
+            return path
+
+        if state not in visited:
+            visited.add(state)
+            for s in problem.getSuccessors(state):
+                # s[0] - next state (x, y)
+                # s[1] - action (e.g. 'South')
+                # Append new actions to current path and push a tuple with next state and new path to the queue        
+                queue.push((s[0], path + [s[1]]))        
+    
+    return []
+
+
+def reconstructPath(path):
+    finalPath = list()
+    curr = path.pop()
+    while curr:
+        if (curr[1] is None):
+            return finalPath.reverse()
+        finalPath.append(curr[1])
+        curr = path.pop()
+    return finalPath.reverse()
 
 
 def uniformCostSearch(problem):
