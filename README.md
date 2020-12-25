@@ -6,7 +6,7 @@ We have to choose two algorithms from [AI Berkeley Pacman's project](http://ai.b
 
 I chose DFS (Depth First Search) and BFS (Breadth First Search) algorithms in [P1 - Search section](http://ai.berkeley.edu/search.html).
 
-## Start examples
+## Run
 
 ```bash
 
@@ -22,6 +22,10 @@ bin/start-dfs smallMaze
 bin/start-bfs bigMaze -z .5 --frameTime 0
 
 ```
+
+### Run Autograder
+
+`bin/start-autograder`
 
 ## DFS vs BFS
 
