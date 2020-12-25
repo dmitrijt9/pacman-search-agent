@@ -80,42 +80,39 @@ def tinyMazeSearch(problem):
 def depthFirstSearch(problem):
     """
     Search the deepest nodes in the search tree first.
-
     Your search algorithm needs to return a list of actions that reaches the
     goal. Make sure to implement a graph search algorithm.
-
-    To get started, you might want to try some of these simple commands to
-    understand the search problem that is being passed in:
-
-    print "Start:", problem.getStartState()
-    print "Is the start a goal?", problem.isGoalState(problem.getStartState())
-    print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
-    print "Start:", problem.getStartState()
-    print "Is the start a goal?", problem.isGoalState(problem.getStartState())
-    print "Start's successors:", problem.getSuccessors(problem.getStartState())
-    print "--------------------"
-
-    plan = list()
-    DFSrecursiveHelper(problem, problem.getStartState(), plan)
-
-    return plan
+    
+    # prepare stack for saving the path and set to save all visited states
+    path, visited = util.Stack(), set()
+    # find the path to the goal recursively
+    DFSrecursiveHelper(problem, problem.getStartState(), path, visited)
+    return path.list
 
 
-def DFSrecursiveHelper(problem, state, plan):
-    GameState.explored.add(state)
+def DFSrecursiveHelper(problem, state, path, visited):
 
+    # return true if finds the goal state
     if (problem.isGoalState(state)):
         return True
-
+    
+    # add state to visited states, so it won't expand it again later
+    visited.add(state)
+    
+    # get all children states of the current state recursively
     for s in problem.getSuccessors(state):
-        if (s[0] not in GameState.explored):
-            plan.append(s[1])
-            isGoalReached = DFSrecursiveHelper(problem, s[0], plan)
-            if isGoalReached:
+        # s[0] is state tuple (x, y) e.g. (5,4)
+        if (s[0] not in visited):
+            # push new action to the path - s[1] is direction string e.g. 'South'
+            path.push(s[1])
+            
+            # if returns true (somewhere in the deep tree the goal was found) then "bubble" this information up
+            if DFSrecursiveHelper(problem, s[0], path, visited):
                 return True
+            # if not, there is a dead end. so, we have to remove last action from the path stack to ensure that our Pacman won't crash :)
             else:
-                plan.pop()
+                path.pop()
     return False
 
 

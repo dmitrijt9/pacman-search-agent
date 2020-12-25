@@ -48,8 +48,17 @@
         "-z",
         ".5",
         "-a",
-        "fn=depthFirstSearch"
+        "fn=depthFirstSearch",
+        "--frameTime",
+        "0"
       ]
+    },
+    {
+      "name": "Autograder",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/autograder.py",
+      "console": "integratedTerminal"
     }
   ]
 }
