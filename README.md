@@ -6,6 +6,23 @@ We have to choose two algorithms from [AI Berkeley Pacman's project](http://ai.b
 
 I chose DFS (Depth First Search) and BFS (Breadth First Search) algorithms in [P1 - Search section](http://ai.berkeley.edu/search.html).
 
+## Start examples
+
+```bash
+
+# DFS
+bin/start-dfs <LAYOUT> <OTHER OPTIONS>
+
+# BFS
+bin/start-bfs <LAYOUT> <OTHER OPTIONS>
+
+# Exmples
+bin/start-dfs smallMaze
+
+bin/start-bfs bigMaze -z .5 --frameTime 0
+
+```
+
 ## DFS vs BFS
 
 DFS is implemented in recursive way.
